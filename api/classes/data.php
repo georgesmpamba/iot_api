@@ -42,12 +42,12 @@ class Data{
         }
 
         /*Méthode pour enregistrer un équipement */
-        public function save(string $device=0, int $content=["hum"=>50, "mac"=>"00:00:00:00:00:00:00:00","temp"=>25]){
+        public function save($content=["hum"=>50, "mac"=>"00:00:00:00:00:00:00:00","temp"=>25]){
             /*Méthode pour enregistrer une voiture*/
             $db_con=$this->str_db;//Récupère la connexion
             $sql=$db_con->prepare("INSERT INTO datas(dev_dat,content_dat) VALUES (:device, :content)");
             try {
-                if($sql->execute([':device'=>$device,':content'=>json_encode($content)])){
+                if($sql->execute([':device'=>$content['mac'],':content'=>json_encode($content)])){
                     return ["success"=>true,"message"=> "Les données ont été ajoutées avec succès"];
                 }
             } catch (Exception $ex) {

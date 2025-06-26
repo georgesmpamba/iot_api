@@ -35,12 +35,11 @@
         exit;
     });
     
- 
     /*Suppression d'un Compte par ID */
     $router->addRoute('POST', "/api/users/delete/{id}", function($id) use($response) {
         
         $model = new User();//Crée une instance pour le User
-        $data= $model->delete((int) $id);
+        $data = $model->delete((int) $id);
         $response['key']= "suppression_de_compte";//
          
         if(isset($data["success"])){//si la requête passe avec succès

@@ -20,7 +20,6 @@ class Device{
     }
      public  function show(int $id=0){
             /*Méthode pour récupérer un équipement d'ID passé en paramètre */
-          //  $this->init();//Initialise automatiquement
             $all=true;
             $db_con= $this->str_db;
             if($id>0){
@@ -45,12 +44,12 @@ class Device{
         }
 
         /*Méthode pour enregistrer un équipement */
-        public function save(string $modele="", int $proprio=0){
+        public function save(string $modele="",string $mac='00:00:00:00:00:00:00:00',  int $proprio=0){
             /*Méthode pour enregistrer une voiture*/
             $db_con=$this->str_db;//Récupère la connexion
-            $sql=$db_con->prepare("INSERT INTO devices(modele_dev,proprio_dev) VALUES (:nom, :proprio)");
+            $sql=$db_con->prepare("INSERT INTO devices(modele_dev,mac_dev,proprio_dev) VALUES (:nom,:mac, :proprio)");
             try {
-                if($sql->execute([':nom'=>$modele,':proprio'=>$proprio])){
+                if($sql->execute([':nom'=>$modele,":mac"=>$mac,':proprio'=>$proprio])){
                     return ["success"=>true,"message"=> "Equipement ajouté avec succès"];
                 }
             } catch (Exception $ex) {
