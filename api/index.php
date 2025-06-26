@@ -26,14 +26,9 @@
     $link='auth/authentification.php'; 
 
     require_once 'router/Router.php';
-    require_once 'classes/communes.php';
-    require_once 'classes/provinces.php';
-    require_once 'classes/reservations.php';
-    require_once 'classes/services.php';
-    require_once 'classes/tarifs.php';
-    require_once 'classes/utilisateurs.php';
-    require_once 'classes/villes.php';
-    require_once 'classes/voitures.php';
+    require_once 'classes/data.php';
+    require_once 'classes/device.php';
+    require_once 'classes/user.php';
    
     require_once $link;//Charge le module d'authentification
 
